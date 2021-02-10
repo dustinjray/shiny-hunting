@@ -18,7 +18,7 @@ class Pokemon {
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {
     final pokemon = Pokemon(
-        name: json['name'],
+        name: _processName(json['name']),
         idNumber: json['id'],
         fileName: json['sprites']['front_shiny'],
         caught: 0);
@@ -27,5 +27,40 @@ class Pokemon {
 
   changeCaught() {
     caught = caught == 0 ? 1 : 0;
+  }
+
+  set fileName(String newFileName) {
+    fileName = newFileName;
+  }
+
+  static String _processName(String name) {
+    switch (name) {
+      case 'ho-oh':
+        return 'Ho-oh';
+      case 'giratina-altered':
+        return 'Giratina';
+      case 'tornadus-incarnate':
+        return 'Tornadus';
+      case 'thundurus-incarnate':
+        return 'Thundurus';
+      case 'landorus-incarnate':
+        return 'Landorus';
+      case 'tapu-koko':
+        return 'Tapu Koko';
+      case 'tapu-lele':
+        return 'Tapu Lele';
+      case 'tapu-bulu':
+        return 'Tapu Bulu';
+      case 'tapu-fini':
+        return 'Tapu Fini';
+      case 'mr-mime':
+        return 'Mr. Mime';
+      default:
+        String newName = name[0].toUpperCase() + name.substring(1);
+        if (newName.contains('-')) {
+          return newName.substring(0, name.indexOf('-'));
+        }
+        return newName;
+    }
   }
 }

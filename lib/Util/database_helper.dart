@@ -53,7 +53,7 @@ class DatabaseHelper {
     $columnId INTEGER PRIMARY KEY,
     $columnName TEXT NOT NULL,
     $columnFileName TEXT NOT NULL,
-    $columnCaught INTEGER NOT NULL
+    $columnCaught INTEGER NOT NULL)
     ''');
   }
 

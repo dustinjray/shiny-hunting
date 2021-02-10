@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'Screens/dynamax_screen.dart';
+import 'package:shiny_chances/Util/network_helper.dart';
+import 'package:shiny_chances/Model/pokemon.dart';
+import 'package:shiny_chances/Model/pokemon_lists.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final networkHelper = NetworkHelper();
+  final legendaries = await networkHelper.getPokemon(PokemonList.normal);
+  legendaries.forEach((mon) {
+    print(mon.name);
+  });
   runApp(MyApp());
 }
 
